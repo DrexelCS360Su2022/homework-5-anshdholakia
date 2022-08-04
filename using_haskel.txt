@@ -1,0 +1,67 @@
+making variables - 
+x :: Int // Define
+x = 1 // Assign
+
+Types of variables - Integer, Double, Float, Bool, Char, String
+
+Lists: [T] is the type of lists whose elements have type T
+
+Boolean variables - 
+not, &&, ||, ==, /=, <, >, <=, >=
+
+Negative numbers must be surrounded by parenthesis
+
+importing modules
+import Data.Char (toUpper)
+
+
+making functions in haskell
+
+<function_name> :: <input_type>/(<multiple_inputs) -> <output_type>
+<function_name> <params> = <body> {Example: if n == 0 then 1 else n * fact (n-1)}
+
+
+calling a function
+<function_name> (<params>)
+
+
+we can use guards instead of if-else statement
+fact n | n == 0     = 1
+       | otherwise  = n* fact (n-1)
+
+uncurried function
+<function_name> :: (<data_type>,<data_type>) -> <output_data_type>
+
+curried function
+<function_name> :: <data_type> -> <data_type> -> <data_type>
+<function_name> <inputs> = <body>
+
+Simplest list is the empty list
+nil = []
+
+
+We can build lists using : or by using special list notation.
+ex17 = 1 : []
+ex18 = 3 : (1 : [])
+ex19 = 2 : 3 : 4 : []
+ex20 = [2,3,4] == 2 : 3 : 4 : []
+
+implementing map in haskel:
+map f xs = 
+       if null xs
+       then []
+       else f (head xs) : map f (tail xs)
+
+or:
+
+map f []      = []
+map f (x:xs)  = f x : map f xs
+
+implementing append in haskel:
+append []     ys = ys
+append (x:xs) ys = x : append xs ys
+
+append :: [Int] -> [Int] -> [Int]
+
+typedef in racket
+type <dest_name> = <source_type>

@@ -15,22 +15,34 @@ isThisWorking = "Yes"
 --
 
 lastDigit :: Integer -> Integer
-lastDigit = error "lastDigit not yet defined"
+lastDigit a = mod a 10
 
 dropLastDigit :: Integer -> Integer
-dropLastDigit = error "dropLastDigit not yet defined"
+dropLastDigit a = a `div` 10
+
+merge :: [a] -> [a] -> [a]
+merge xs     []     = xs
+merge []     ys     = ys
+merge (x:xs) (y:ys) = x : y : merge xs ys
 
 toDigits :: Integer -> [Integer]
-toDigits = error "toDigits not yet defined"
+toDigits n | n == 0 = []
+           | n < 0 = []
+           | otherwise = (toDigits (dropLastDigit n)) ++ [lastDigit n]
 
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther = error "doubleEveryOther not yet defined"
+doubleEveryOther a | a == [] = []
+                   | length a == 1 = [head a]
+                   | otherwise = (doubleEveryOther (init (init a))) ++ [2*(last (init a)), last a]
 
 sumDigits :: [Integer] -> Integer
-sumDigits = error "sumDigits not yet defined"
+sumDigits a | a == [] = 0
+            | a == [0] = 0
+            | length a == 1 =  (head (toDigits (head a))) + (sumDigits (tail (toDigits (head a))))
+            | otherwise = (sumDigits (toDigits (head a))) + (sumDigits (tail a))
 
 validate :: Integer -> Bool
-validate = error "validate not yet defined"
+validate a | a == 
 
 --
 -- Problem 2
