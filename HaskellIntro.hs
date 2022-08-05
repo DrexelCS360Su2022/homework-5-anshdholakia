@@ -42,23 +42,27 @@ sumDigits a | a == [] = 0
             | otherwise = (sumDigits (toDigits (head a))) + (sumDigits (tail a))
 
 validate :: Integer -> Bool
-validate a | a == 
+validate a = (mod (sumDigits (doubleEveryOther (toDigits a))) 10) == 0
 
 --
 -- Problem 2
 --
 
 pow :: (a -> a) -> Int -> a -> a
-pow = error "pow not yet defined"
+pow func n x | n == 0 = x
+             | otherwise = (pow func (n-1) (func x))
 
 g :: Integer -> Integer
-g = error "g not yet defined"
+g x | x == 0 = 0
+    | otherwise = x - pow g 2 (x-1) 
 
 h :: Integer -> Integer
-h = error "h not yet defined"
+h x | x == 0 = 0
+    | otherwise = x - pow h 3 (x-1) 
 
 d :: Int -> Integer -> Integer
-d = error "d not yet defined"
+d n x | x == 0 = 0
+      | otherwise = x - (pow (d n) n (x-1))
 
 --
 -- Problem 3
